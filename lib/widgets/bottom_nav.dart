@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import '../constants/colorconstants.dart';
+import '../screens/search_screen/search_view.dart'; // Import SearchScreen
 
 class BottomNav extends StatelessWidget {
   final int selectedIndex;
@@ -16,7 +16,17 @@ class BottomNav extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: selectedIndex,
-      onTap: onItemTapped,
+      onTap: (index) {
+        if (index == 1) {
+          // Navigate to SearchScreen
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => SearchScreen()),
+          );
+        } else {
+          onItemTapped(index);
+        }
+      },
       selectedItemColor: AppColors.mirage,
       unselectedItemColor: Colors.black,
       iconSize: 24,
@@ -38,10 +48,6 @@ class BottomNav extends StatelessWidget {
           icon: Icon(Icons.favorite),
           label: 'Favorites',
         ),
-        //BottomNavigationBarItem(
-        //  icon: Icon(Icons.account_circle),
-        //  label: 'Profile',
-        //),
       ],
     );
   }

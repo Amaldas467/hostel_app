@@ -149,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         return Padding(
                           padding: const EdgeInsets.only(right: 8.0),
                           child: SizedBox(
-                            width: 220,
+                            width: 210,
                             child: Hostelcard(
                               imageUrl: hostel['imageUrl'],
                               rating: hostel['rating'],
@@ -159,6 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               originalPrice: hostel['originalPrice'],
                               offerPercentage: hostel['offerPercentage'],
                               userCount: hostel['userCount'],
+                              landmark: hostel['landmark'],
                             ),
                           ),
                         );
@@ -166,6 +167,18 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 },
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                'Hostel Premium Price range',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),
