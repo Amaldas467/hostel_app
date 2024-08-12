@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hostel_app/screens/homescreen/widgets/card2.dart';
+import 'package:hostel_app/screens/homescreen/widgets/carousel.dart';
 import 'package:hostel_app/screens/homescreen/widgets/drawer.dart';
 import 'package:hostel_app/screens/homescreen/widgets/hostelcard.dart';
-import 'package:hostel_app/widgets/bottom_nav.dart';
+
 import '../../constants/colorconstants.dart';
 import 'widgets/hosteldata.dart';
 import 'widgets/tab_bar.dart';
@@ -174,7 +176,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Padding(
               padding: const EdgeInsets.all(10),
               child: Text(
-                'Hostel Premium Price range',
+                'Best offers for you',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -182,12 +184,64 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child:
+                  MyCarousel(), // Directly use MyCarousel widget with CarouselSlider
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                'Hostels at best price range',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: SizedBox(
+                height: 220,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: cardData.length,
+                  itemBuilder: (context, index) {
+                    double containerWidth =
+                        (index == 0) ? 220 : 200; // Adjust width based on index
+                    return Card2(
+                      containerWidth: containerWidth,
+                      cardData: cardData[index],
+                    );
+                  },
+                ),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Container(
+                height: 50,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.black)),
+                child: Center(
+                    child: Text(
+                  "View all offers",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                )),
+              ),
+            ),
+          )
         ],
       ),
-      //bottomNavigationBar: BottomNav(
-      //  selectedIndex: _selectedIndex,
-      //  onItemTapped: _onItemTapped,
-      //),
     );
   }
 }
