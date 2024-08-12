@@ -38,10 +38,10 @@ class BottomNav extends StatelessWidget {
           icon: Icon(Icons.favorite),
           label: 'Favorites',
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.account_circle),
-          label: 'Profile',
-        ),
+        //BottomNavigationBarItem(
+        //  icon: Icon(Icons.account_circle),
+        //  label: 'Profile',
+        //),
       ],
     );
   }

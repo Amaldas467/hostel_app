@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hostel_app/screens/homescreen/widgets/drawer.dart';
 import 'package:hostel_app/screens/homescreen/widgets/hostelcard.dart';
 import 'package:hostel_app/widgets/bottom_nav.dart';
 import '../../constants/colorconstants.dart';
@@ -24,12 +25,17 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: AppColors.creamColor,
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: () {},
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+          ),
         ),
         title: Text('Homescreen'),
       ),
+      drawer: Homescreen_drawer(),
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
@@ -55,18 +61,58 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
               child: SizedBox(
-                height: 70,
+                height: 120,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 8,
+                  itemCount: cities.length + 1,
                   itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: CircleAvatar(
-                        radius: 35,
-                        backgroundImage: AssetImage('assets/hostel2.jpeg'),
-                      ),
-                    );
+                    if (index == 0) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Column(
+                          children: [
+                            CircleAvatar(
+                              radius: 35,
+                              backgroundColor: Colors.black,
+                              child: Icon(
+                                Icons.near_me,
+                                color: Colors.white,
+                                size: 30,
+                              ),
+                            ),
+                            SizedBox(height: 8),
+                            Text(
+                              'Nearby',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    } else {
+                      final city = cities[index - 1];
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Column(
+                          children: [
+                            CircleAvatar(
+                              radius: 35,
+                              backgroundImage: AssetImage(city['image']!),
+                            ),
+                            SizedBox(height: 8),
+                            Text(
+                              city['name']!,
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      );
+                    }
                   },
                 ),
               ),
@@ -93,7 +139,8 @@ class _HomeScreenState extends State<HomeScreen> {
               child: LayoutBuilder(
                 builder: (context, constraints) {
                   return SizedBox(
-                    height: 250,
+                    height: 300,
+                    //width: 300,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: hostels.length,
@@ -102,12 +149,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         return Padding(
                           padding: const EdgeInsets.only(right: 8.0),
                           child: SizedBox(
-                            width: 180, // Fixed width for each item
+                            width: 240,
                             child: Hostelcard(
                               imageUrl: hostel['imageUrl'],
                               rating: hostel['rating'],
                               title: hostel['title'],
                               price: hostel['price'],
+                              location: hostel['location'],
+                              originalPrice: hostel['originalPrice'],
+                              offerPercentage: hostel['offerPercentage'],
+                              userCount: hostel['userCount'],
                             ),
                           ),
                         );

@@ -1,113 +1,116 @@
 import 'package:flutter/material.dart';
 
-class Hostelcard extends StatefulWidget {
+class Hostelcard extends StatelessWidget {
   final String imageUrl;
   final double rating;
   final String title;
   final String price;
+  final String location;
+  final String originalPrice;
+  final String offerPercentage;
+  final int userCount;
 
   Hostelcard({
     required this.imageUrl,
     required this.rating,
     required this.title,
     required this.price,
+    required this.location,
+    required this.originalPrice,
+    required this.offerPercentage,
+    required this.userCount,
   });
 
   @override
-  _HostelcardState createState() => _HostelcardState();
-}
-
-class _HostelcardState extends State<Hostelcard> {
-  bool _isLiked = false;
-
-  void _toggleLike() {
-    setState(() {
-      _isLiked = !_isLiked;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
-            spreadRadius: 2,
-            blurRadius: 5,
-          ),
-        ],
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
       ),
+      elevation: 5,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Stack(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: Image.asset(
-                  widget.imageUrl,
-                  width: double.infinity,
-                  height: 120,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Positioned(
-                top: 8,
-                right: 8,
-                child: CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: 14,
-                  child: IconButton(
-                    icon: Icon(
-                      _isLiked ? Icons.favorite : Icons.favorite_border,
-                      color: _isLiked
-                          ? Colors.red
-                          : Color.fromARGB(255, 48, 48, 48),
-                    ),
-                    onPressed: _toggleLike,
-                    padding: EdgeInsets.zero,
-                    constraints: BoxConstraints(),
-                  ),
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 8),
-          Row(
-            children: [
-              Icon(
-                Icons.star,
-                color: Colors.amber,
-                size: 20,
-              ),
-              SizedBox(width: 4),
-              Text(
-                '${widget.rating}',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          SizedBox(height: 8),
-          Text(
-            widget.title,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+          ClipRRect(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+            child: Image.asset(
+              imageUrl,
+              fit: BoxFit.cover,
+              height: 150,
+              width: double.infinity,
             ),
           ),
-          SizedBox(height: 4),
-          Text(
-            widget.price,
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.green,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                      size: 16,
+                    ),
+                    SizedBox(width: 4),
+                    Text(
+                      '$rating (${userCount} users)',
+                      style: TextStyle(
+                        fontSize: 14,
+                      ),
+                    ),
+                  ],
+                ),
+                Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 4),
+                Text(
+                  location,
+                  style: TextStyle(
+                    color: Colors.grey,
+                  ),
+                ),
+                SizedBox(height: 8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      price,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.green,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          originalPrice,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.red,
+                            decoration: TextDecoration.lineThrough,
+                          ),
+                        ),
+                        SizedBox(width: 8),
+                        Text(
+                          offerPercentage,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.red,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(height: 8),
+              ],
             ),
           ),
         ],
