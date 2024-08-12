@@ -149,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         return Padding(
                           padding: const EdgeInsets.only(right: 8.0),
                           child: SizedBox(
-                            width: 240,
+                            width: 220,
                             child: Hostelcard(
                               imageUrl: hostel['imageUrl'],
                               rating: hostel['rating'],

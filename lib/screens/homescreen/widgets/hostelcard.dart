@@ -32,7 +32,8 @@ class Hostelcard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+            borderRadius: BorderRadius.vertical(
+                top: Radius.circular(15), bottom: Radius.circular(15)),
             child: Image.asset(
               imageUrl,
               fit: BoxFit.cover,
@@ -41,7 +42,7 @@ class Hostelcard extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(left: 15, top: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -50,25 +51,26 @@ class Hostelcard extends StatelessWidget {
                     Icon(
                       Icons.star,
                       color: Colors.amber,
-                      size: 16,
+                      size: 19,
                     ),
                     SizedBox(width: 4),
                     Text(
-                      '$rating (${userCount} users)',
+                      '$rating (${userCount})',
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 15,
                       ),
                     ),
                   ],
                 ),
+                SizedBox(height: 6),
                 Text(
                   title,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 4),
+                SizedBox(height: 3),
                 Text(
                   location,
                   style: TextStyle(
@@ -77,35 +79,32 @@ class Hostelcard extends StatelessWidget {
                 ),
                 SizedBox(height: 8),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
                       price,
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
-                        color: Colors.green,
+                        //color: Colors.green,
                       ),
                     ),
-                    Row(
-                      children: [
-                        Text(
-                          originalPrice,
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.red,
-                            decoration: TextDecoration.lineThrough,
-                          ),
-                        ),
-                        SizedBox(width: 8),
-                        Text(
-                          offerPercentage,
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.red,
-                          ),
-                        ),
-                      ],
+                    SizedBox(width: 8),
+                    Text(
+                      originalPrice,
+                      style: TextStyle(
+                        fontSize: 14,
+                        //color: Colors.red,
+                        decoration: TextDecoration.lineThrough,
+                      ),
+                    ),
+                    SizedBox(width: 10),
+                    Text(
+                      offerPercentage,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.green,
+                      ),
                     ),
                   ],
                 ),
