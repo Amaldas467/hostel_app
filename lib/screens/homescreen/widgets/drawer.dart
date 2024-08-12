@@ -19,8 +19,8 @@ class Homescreen_drawer extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 30,
-                  backgroundImage: AssetImage(
-                      'assets/profile.jpg'), // Replace with your profile image asset
+                  backgroundImage: NetworkImage(
+                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy5zKoI_m0hy7V1711x_xYAGJesoMf7jwyhQ&s'), // Replace with your profile image asset
                 ),
                 SizedBox(width: 10),
                 Expanded(

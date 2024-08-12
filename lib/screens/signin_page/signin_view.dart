@@ -104,7 +104,7 @@ class SignInView extends StatelessWidget {
                                 child: ElevatedButton(
                                   onPressed: () {
                                     viewModel.signIn(context);
-                                    Navigator.of(context).pushNamed('/home');
+                                    Navigator.of(context).pushNamed('/main');
                                   },
                                   child: Text('Sign In'),
                                   style: ElevatedButton.styleFrom(

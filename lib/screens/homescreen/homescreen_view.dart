@@ -184,10 +184,10 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNav(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
-      ),
+      //bottomNavigationBar: BottomNav(
+      //  selectedIndex: _selectedIndex,
+      //  onItemTapped: _onItemTapped,
+      //),
     );
   }
 }
