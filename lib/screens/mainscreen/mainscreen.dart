@@ -3,7 +3,6 @@ import 'package:hostel_app/screens/bookingscreen/booking.dart';
 import 'package:hostel_app/screens/favouritescreen/favourites.dart';
 import 'package:hostel_app/screens/homescreen/homescreen_view.dart';
 import 'package:hostel_app/screens/search_screen/search_view.dart';
-
 import 'package:hostel_app/widgets/bottom_nav.dart';
 
 class MainScreen extends StatefulWidget {
@@ -17,8 +16,9 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _pages = [
     HomeScreen(),
     SearchScreen(),
-    Booking(), // Assume BookingScreen is a valid widget
-    Favourites(), // Assume FavoritesScreen is a valid widget
+    Booking(),
+    Favourites(),
+    // You might want to add a new page corresponding to '한국어'
   ];
 
   void _onItemTapped(int index) {

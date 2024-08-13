@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flashy_tab_bar2/flashy_tab_bar2.dart'; // Correct import
 import '../constants/colorconstants.dart';
 
 class BottomNav extends StatelessWidget {
@@ -13,30 +14,41 @@ class BottomNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: selectedIndex,
-      onTap: (index) {
-        onItemTapped(index);
+    return FlashyTabBar(
+      selectedIndex: selectedIndex,
+      showElevation: true, // Shows shadow below the tab bar
+      onItemSelected: (index) {
+        onItemTapped(
+            index); // Ensure this is correctly set to update the selected index
       },
-      selectedItemColor: AppColors.mirage,
-      unselectedItemColor: Colors.black,
-      iconSize: 24,
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
+      items: [
+        FlashyTabBarItem(
+          icon: Icon(
+            Icons.home,
+            size: 26,
+          ),
+          title: Text('Home'),
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.search),
-          label: 'Search',
+        FlashyTabBarItem(
+          icon: Icon(
+            Icons.search,
+            size: 26,
+          ),
+          title: Text('Search'),
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.shopping_bag_outlined),
-          label: 'Booking',
+        FlashyTabBarItem(
+          icon: Icon(
+            Icons.shopping_bag_outlined,
+            size: 26,
+          ),
+          title: Text('Booking'),
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.favorite),
-          label: 'Favorites',
+        FlashyTabBarItem(
+          icon: Icon(
+            Icons.favorite,
+            size: 26,
+          ),
+          title: Text('Favorites'),
         ),
       ],
     );
