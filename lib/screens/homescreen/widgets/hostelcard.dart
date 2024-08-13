@@ -83,7 +83,7 @@ class _HostelcardState extends State<Hostelcard> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 2),
+                    SizedBox(height: 3),
                     Text(
                       widget.title,
                       style: TextStyle(
@@ -91,7 +91,7 @@ class _HostelcardState extends State<Hostelcard> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    SizedBox(height: 3),
+                    SizedBox(height: 2),
                     Text(
                       widget.location,
                       style: TextStyle(

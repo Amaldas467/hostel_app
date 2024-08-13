@@ -119,6 +119,67 @@ class TabBarSectionState extends State<TabBarSection>
       slivers: [
         SliverToBoxAdapter(
           child: Padding(
+            padding: const EdgeInsets.only(left: 8, right: 8, top: 18),
+            child: SizedBox(
+              height: 100,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: cities.length + 1,
+                itemBuilder: (context, index) {
+                  if (index == 0) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Column(
+                        children: [
+                          CircleAvatar(
+                            radius: 35,
+                            backgroundColor: Colors.black,
+                            child: Icon(
+                              Icons.near_me,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            'Nearby',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  } else {
+                    final city = cities[index - 1];
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      child: Column(
+                        children: [
+                          CircleAvatar(
+                            radius: 35,
+                            backgroundImage: AssetImage(city['image']!),
+                          ),
+                          SizedBox(height: 8),
+                          Text(
+                            city['name']!,
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+                },
+              ),
+            ),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: Padding(
             padding:
                 const EdgeInsets.only(left: 8, right: 8, bottom: 6, top: 20),
             child: Text(
@@ -271,11 +332,8 @@ class TabBarSectionState extends State<TabBarSection>
   }
 
   Widget _buildEmptyTab() {
-    return Center(
-      child: Text(
-        "No content available",
-        style: TextStyle(fontSize: 18, color: Colors.grey),
-      ),
+    return CustomScrollView(
+      slivers: [],
     );
   }
 }
