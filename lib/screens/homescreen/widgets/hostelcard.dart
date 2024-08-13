@@ -10,6 +10,8 @@ class Hostelcard extends StatefulWidget {
   final String offerPercentage;
   final int userCount;
   final String landmark;
+  final double height;
+  final int taxes;
 
   Hostelcard({
     required this.imageUrl,
@@ -21,6 +23,8 @@ class Hostelcard extends StatefulWidget {
     required this.offerPercentage,
     required this.userCount,
     required this.landmark,
+    required this.height,
+    required this.taxes,
   });
 
   @override
@@ -54,12 +58,12 @@ class _HostelcardState extends State<Hostelcard> {
                 child: Image.asset(
                   widget.imageUrl,
                   fit: BoxFit.cover,
-                  height: 150,
+                  height: widget.height,
                   width: double.infinity,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 15, top: 10),
+                padding: const EdgeInsets.only(left: 15, top: 5),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -79,7 +83,7 @@ class _HostelcardState extends State<Hostelcard> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 5),
+                    SizedBox(height: 2),
                     Text(
                       widget.title,
                       style: TextStyle(
@@ -101,7 +105,7 @@ class _HostelcardState extends State<Hostelcard> {
                         fontStyle: FontStyle.italic,
                       ),
                     ),
-                    SizedBox(height: 5),
+                    SizedBox(height: 3),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -133,7 +137,15 @@ class _HostelcardState extends State<Hostelcard> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 8),
+                    SizedBox(height: 1),
+                    Text(
+                      '+ ${widget.taxes} taxes & fees',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 14,
+                      ),
+                    ),
+                    SizedBox(height: 6),
                   ],
                 ),
               ),
@@ -145,7 +157,7 @@ class _HostelcardState extends State<Hostelcard> {
             child: Stack(
               children: [
                 CircleAvatar(
-                  radius: 16,
+                  radius: 18,
                   backgroundColor: Colors.white,
                 ),
                 Positioned.fill(
@@ -155,7 +167,7 @@ class _HostelcardState extends State<Hostelcard> {
                       icon: Icon(
                         _isFavorite ? Icons.favorite : Icons.favorite_border,
                         color: _isFavorite ? Colors.red : Colors.grey,
-                        size: 19,
+                        size: 20,
                       ),
                       onPressed: _toggleFavorite,
                     ),

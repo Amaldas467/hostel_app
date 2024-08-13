@@ -11,6 +11,7 @@ final List<Map<String, dynamic>> hostels = [
     'originalPrice': '\$60',
     'offerPercentage': '20% OFF',
     'userCount': 120,
+    'taxes': 20,
   },
   {
     'imageUrl': 'assets/hostel1.jpg',
@@ -22,6 +23,7 @@ final List<Map<String, dynamic>> hostels = [
     'originalPrice': '\$75',
     'offerPercentage': '15% OFF',
     'userCount': 95,
+    'taxes': 20,
   },
   {
     'imageUrl': 'assets/hostel1.jpg',
@@ -33,6 +35,7 @@ final List<Map<String, dynamic>> hostels = [
     'originalPrice': '\$100',
     'offerPercentage': '20% OFF',
     'userCount': 200,
+    'taxes': 20,
   },
   {
     'imageUrl': 'assets/hostel1.jpg',
@@ -44,6 +47,7 @@ final List<Map<String, dynamic>> hostels = [
     'originalPrice': '\$40',
     'offerPercentage': '25% OFF',
     'userCount': 80,
+    'taxes': 20,
   },
 ];
 
@@ -112,5 +116,34 @@ final List<Map<String, dynamic>> cardData = [
     'taxes': '+ taxes',
     'buttonText': 'Explore',
     'buttonColor': Colors.purple,
+  },
+];
+
+//filter button data
+
+final buttonData = [
+  {
+    'icon': Icons.keyboard_arrow_down_sharp,
+    'text': 'Sort',
+  },
+  {
+    'icon': Icons.keyboard_arrow_down_sharp,
+    'text': 'Locality',
+  },
+  {
+    'icon': Icons.keyboard_arrow_down_sharp,
+    'text': 'Price',
+  },
+  {
+    'icon': Icons.keyboard_arrow_down_sharp,
+    'text': 'Townhouse',
+  },
+  {
+    'icon': Icons.keyboard_arrow_down_sharp,
+    'text': 'Trending',
+  },
+  {
+    'icon': Icons.keyboard_arrow_down_sharp,
+    'text': 'collection',
   },
 ];

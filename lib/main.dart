@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:hostel_app/app/app.router.dart';
 
-import 'package:hostel_app/screens/signup_page/signup_view.dart';
-import 'package:hostel_app/screens/signin_page/signin_view.dart';
-import 'package:hostel_app/screens/search_screen/search_view.dart';
-import 'package:hostel_app/screens/splash_screen/splash_view.dart';
+import 'package:stacked_services/stacked_services.dart';
 
-import 'screens/mainscreen/mainscreen.dart';
+import 'widgets/setup_dependencies.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  //if (!kIsWeb) {
+  //  if (Platform.isAndroid) {
+  //    ByteData data = await PlatformAssetBundle().load(
+  //      Assets.ca.letsEncryptR3,
+  //    );
+  //    SecurityContext.defaultContext.setTrustedCertificatesBytes(
+  //      data.buffer.asUint8List(),
+  //    );
+  //  }
+  //}
+  setupDependencies();
   runApp(MyApp());
 }
 
@@ -20,22 +36,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: AppRouter.splashRoute,
-      routes: {
-        AppRouter.splashRoute: (context) => SplashScreenView(),
-        AppRouter.mainScreenRoute: (context) => MainScreen(),
-        AppRouter.signUpRoute: (context) => SignUpView(),
-        AppRouter.signinRoute: (context) => SignInView(),
-        AppRouter.searchRoute: (context) => SearchScreen(),
-      },
+      navigatorKey: StackedService.navigatorKey,
+      onGenerateRoute: StackedRouter().onGenerateRoute,
+      navigatorObservers: [
+        StackedService.routeObserver,
+        //Statusbarz.instance.observer,
+        //FlutterSmartDialog.observer
+      ],
     );
   }
-}
-
-class AppRouter {
-  static const String splashRoute = '/splash';
-  static const String mainScreenRoute = '/main';
-  static const String signUpRoute = '/signup';
-  static const String signinRoute = '/signin';
-  static const String searchRoute = '/search';
 }

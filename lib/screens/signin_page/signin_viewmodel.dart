@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hostel_app/app/utils.dart';
 import 'package:stacked/stacked.dart';
 import 'package:provider/provider.dart';
 
+import '../../app/app.router.dart';
 import '../signup_page/widgets/auth_notifier.dart';
 
 class SignInViewModel extends BaseViewModel {
@@ -28,8 +30,8 @@ class SignInViewModel extends BaseViewModel {
           await Provider.of<AuthenticationNotifer>(context, listen: false)
               .signIn(email: email, password: password);
       if (isValid) {
-        Navigator.of(context)
-            .pushReplacementNamed('/home'); // Adjust to your actual route
+        navigationService.navigateTo(Routes.mainScreen);
+        //Navigator.of(context).pushReplacementNamed('/home');
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text("Sign In Successful"),

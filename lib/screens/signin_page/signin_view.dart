@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hostel_app/app/app.router.dart';
+import 'package:hostel_app/app/utils.dart';
 import 'package:stacked/stacked.dart';
 
 import '../../constants/colorconstants.dart';
@@ -104,7 +106,9 @@ class SignInView extends StatelessWidget {
                                 child: ElevatedButton(
                                   onPressed: () {
                                     viewModel.signIn(context);
-                                    Navigator.of(context).pushNamed('/main');
+                                    //Navigator.of(context).pushNamed('/main');
+                                    navigationService
+                                        .navigateTo(Routes.mainScreen);
                                   },
                                   child: Text('Sign In'),
                                   style: ElevatedButton.styleFrom(
@@ -125,8 +129,10 @@ class SignInView extends StatelessWidget {
                                   ),
                                   GestureDetector(
                                     onTap: () {
-                                      Navigator.of(context)
-                                          .pushNamed('/sign-up');
+                                      //Navigator.of(context)
+                                      //    .pushNamed('/sign-up');
+                                      navigationService
+                                          .navigateTo(Routes.signUpView);
                                     },
                                     child: Text(
                                       'Sign Up',

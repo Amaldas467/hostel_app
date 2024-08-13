@@ -17,11 +17,7 @@ class SignUpViewModel extends BaseViewModel {
 
   void signin(BuildContext context) {
     if (formKey.currentState?.validate() ?? false) {
-      // Perform registration logic here (e.g., API call)
-
-      // Navigate to another screen upon successful registration
-      Navigator.of(context)
-          .pushNamed('/home'); // or use AppRouter.homeRoute if defined
+      Navigator.of(context).pushNamed('/home');
     }
   }
 }

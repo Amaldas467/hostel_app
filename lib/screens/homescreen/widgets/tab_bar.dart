@@ -27,7 +27,7 @@ class TabBarSectionState extends State<TabBarSection>
           tabs: [
             Tab(text: 'Recommended'),
             Tab(text: 'Top-Rated'),
-            Tab(text: 'Premium'),
+            Tab(text: 'Trending'),
           ],
           indicatorColor: Colors.blue,
           labelColor: Colors.black,
