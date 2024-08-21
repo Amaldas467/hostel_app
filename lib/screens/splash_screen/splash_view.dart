@@ -12,7 +12,8 @@ class SplashScreenView extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.all(30),
           child: Center(
-            child: Image.asset("assets/logo.png"),
+            // child: Image.asset("assets/logo.png"),
+            child: CircularProgressIndicator(),
           ),
         ),
       ),
