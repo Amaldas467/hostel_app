@@ -48,13 +48,6 @@ class Homescreen_drawer extends StatelessWidget {
             ),
           ),
           ListTile(
-            leading: Icon(Icons.home),
-            title: Text('Home'),
-            onTap: () {
-              // Navigate to home screen
-            },
-          ),
-          ListTile(
             leading: Icon(Icons.account_circle),
             title: Text('Profile'),
             onTap: () {
@@ -64,6 +57,49 @@ class Homescreen_drawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.settings),
             title: Text('Settings'),
+            onTap: () {
+              // Navigate to settings screen
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.chat_outlined),
+            title: Text('Need Help'),
+            onTap: () {
+              // Navigate to settings screen
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.people),
+            title: Text('Invite & Earn'),
+            onTap: () {
+              // Navigate to settings screen
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.wallet_outlined),
+            title: Text('Link Wallet'),
+            onTap: () {
+              // Navigate to settings screen
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.lock),
+            title: Text('View Privacy Policy'),
+            onTap: () {
+              // Navigate to settings screen
+            },
+          ),
+          Padding(
+            padding: const EdgeInsets.all(14),
+            child: Text(
+              '  Are You A Property Owner ?',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+          ),
+          ListTile(
+            leading: Icon(Icons.apartment),
+            title: Text('List Your Property'),
+            //subtitle: Text(),
             onTap: () {
               // Navigate to settings screen
             },
