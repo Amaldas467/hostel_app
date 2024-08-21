@@ -8,7 +8,7 @@ class Favourites extends StatelessWidget {
         title: Text('favourites'),
       ),
       body: Center(
-        child: Text('favourites'),
+        child: Text('No favourites added'),
       ),
     );
   }
