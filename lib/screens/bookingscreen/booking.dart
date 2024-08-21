@@ -8,7 +8,7 @@ class Booking extends StatelessWidget {
         title: Text('bookings'),
       ),
       body: Center(
-        child: Text('bookings'),
+        child: Text('No Bookings Currently'),
       ),
     );
   }

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'card2.dart';
-import 'carousel.dart';
-import 'filter_widget.dart';
-import 'hostelcard.dart';
-import 'hosteldata.dart';
+import '../card2.dart';
+import '../carousel.dart';
+import '../filter_widget.dart';
+import '../hostelcard.dart';
+import '../hosteldata.dart';
 
 class TopratedTab extends StatelessWidget {
   const TopratedTab({super.key});

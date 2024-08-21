@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:hostel_app/screens/homescreen/widgets/hostelcard.dart';
 
-import 'card2.dart';
-import 'carousel.dart';
-import 'filter_widget.dart';
-import 'hosteldata.dart';
+import '../card2.dart';
+import '../carousel.dart';
+import '../filter_widget.dart';
+import '../hosteldata.dart';
 
 class RecommendedTab extends StatelessWidget {
   const RecommendedTab({super.key});

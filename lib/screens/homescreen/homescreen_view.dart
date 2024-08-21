@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hostel_app/screens/homescreen/widgets/card2.dart';
-import 'package:hostel_app/screens/homescreen/widgets/carousel.dart';
 import 'package:hostel_app/screens/homescreen/widgets/drawer.dart';
-import 'package:hostel_app/screens/homescreen/widgets/filter_widget.dart';
-import 'package:hostel_app/screens/homescreen/widgets/hostelcard.dart';
-import 'package:hostel_app/screens/homescreen/widgets/recommended_tab.dart';
-import 'package:hostel_app/screens/homescreen/widgets/toprated_tab.dart';
-import 'package:hostel_app/screens/homescreen/widgets/trending_tab.dart';
-
+import 'package:hostel_app/screens/homescreen/widgets/tabs/recommended_tab.dart';
+import 'package:hostel_app/screens/homescreen/widgets/tabs/toprated_tab.dart';
+import 'package:hostel_app/screens/homescreen/widgets/tabs/trending_tab.dart';
 import '../../constants/colorconstants.dart';
-import 'widgets/hosteldata.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -54,7 +48,6 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          // Add the TabBar and TabBarView section here
           SliverToBoxAdapter(
             child: TabBarSection(),
           ),
@@ -104,11 +97,8 @@ class TabBarSectionState extends State<TabBarSection>
           child: TabBarView(
             controller: _tabController,
             children: [
-              // Recommended Tab: Show the existing contents here
               _buildRecommendedTab(),
-              // Top-Rated Tab: Show an empty container
               _buildTopratedTab(),
-              // Trending Tab: Show an empty container
               _TrendingTab(),
             ],
           ),

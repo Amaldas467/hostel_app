@@ -18,7 +18,6 @@ class _MainScreenState extends State<MainScreen> {
     SearchScreen(),
     Booking(),
     Favourites(),
-    // You might want to add a new page corresponding to '한국어'
   ];
 
   void _onItemTapped(int index) {

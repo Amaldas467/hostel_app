@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'filter_widget.dart';
-import 'hostelcard.dart';
-import 'hosteldata.dart';
+import '../filter_widget.dart';
+import '../hostelcard.dart';
+import '../hosteldata.dart';
 
 class TrendingTab extends StatelessWidget {
   const TrendingTab({super.key});
@@ -11,24 +11,6 @@ class TrendingTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        //SliverToBoxAdapter(
-        //  child: Padding(
-        //    padding: const EdgeInsets.all(10),
-        //    child: Text(
-        //      'Best offers for you',
-        //      style: TextStyle(
-        //        fontSize: 20,
-        //        fontWeight: FontWeight.bold,
-        //      ),
-        //    ),
-        //  ),
-        //),
-        //SliverToBoxAdapter(
-        //  child: Padding(
-        //    padding: const EdgeInsets.all(12),
-        //    child: MyCarousel(),
-        //  ),
-        //),
         SliverToBoxAdapter(
           child: Padding(
             padding:
