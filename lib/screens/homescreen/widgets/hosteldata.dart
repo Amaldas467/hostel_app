@@ -147,3 +147,11 @@ final buttonData = [
     'text': 'collection',
   },
 ];
+
+final List<String> places = [
+  'New York',
+  'Los Angeles',
+  'Chicago',
+  'Houston',
+  'Phoenix',
+];

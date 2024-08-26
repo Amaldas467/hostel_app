@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../constants/colorconstants.dart';
-import '../homescreen/homescreen_view.dart';
-import '../homescreen/widgets/card2.dart';
-import '../homescreen/widgets/carousel.dart';
+
 import '../homescreen/widgets/drawer.dart';
-import '../homescreen/widgets/filter_widget.dart';
+
 import '../homescreen/widgets/hostelcard.dart';
 import '../homescreen/widgets/hosteldata.dart';
 
@@ -105,6 +103,172 @@ class SearchScreen extends StatelessWidget {
                     }
                   },
                 ),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                left: 15,
+                right: 8,
+                bottom: 6,
+              ),
+              child: Text(
+                'Frequently Searched Hostels',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding:
+                  const EdgeInsets.only(left: 8, right: 8, bottom: 6, top: 20),
+              child: ListView.builder(
+                shrinkWrap: true, // Ensures it doesn't take infinite height
+                physics:
+                    NeverScrollableScrollPhysics(), // Prevents nested scrolling
+                itemCount: places.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    leading: Icon(Icons.location_on),
+                    title: Text(
+                      places[index],
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                left: 15,
+                right: 8,
+                bottom: 6,
+              ),
+              child: Text(
+                'Book your  Hostels',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return SizedBox(
+                    height: 330,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: hostels.length,
+                      itemBuilder: (context, index) {
+                        final hostel = hostels[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: SizedBox(
+                            width: 210,
+                            child: Hostelcard(
+                              height: 170,
+                              imageUrl: hostel['imageUrl'],
+                              rating: hostel['rating'],
+                              title: hostel['title'],
+                              price: hostel['price'],
+                              location: hostel['location'],
+                              originalPrice: hostel['originalPrice'],
+                              offerPercentage: hostel['offerPercentage'],
+                              userCount: hostel['userCount'],
+                              landmark: hostel['landmark'],
+                              taxes: hostel['taxes'],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Container(
+                height: 50,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.black)),
+                child: Center(
+                    child: Text(
+                  "View all",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                )),
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return SizedBox(
+                    height: 330,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: hostels.length,
+                      itemBuilder: (context, index) {
+                        final hostel = hostels[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: SizedBox(
+                            width: 210,
+                            child: Hostelcard(
+                              height: 170,
+                              imageUrl: hostel['imageUrl'],
+                              rating: hostel['rating'],
+                              title: hostel['title'],
+                              price: hostel['price'],
+                              location: hostel['location'],
+                              originalPrice: hostel['originalPrice'],
+                              offerPercentage: hostel['offerPercentage'],
+                              userCount: hostel['userCount'],
+                              landmark: hostel['landmark'],
+                              taxes: hostel['taxes'],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Container(
+                height: 50,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.black)),
+                child: Center(
+                    child: Text(
+                  "View all",
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                )),
               ),
             ),
           ),
