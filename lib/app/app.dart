@@ -1,5 +1,7 @@
 import 'package:hostel_app/screens/bookingscreen/booking.dart';
 import 'package:hostel_app/screens/favouritescreen/favourites.dart';
+import 'package:hostel_app/screens/homescreen/widgets/drawer_screens/profile_screen.dart';
+//import 'package:hostel_app/screens/homescreen/widgets/drawer_screens/profile_screen.dart';
 import 'package:hostel_app/screens/mainscreen/mainscreen.dart';
 import 'package:hostel_app/screens/search_screen/search_view.dart';
 import 'package:hostel_app/screens/signin_page/signin_view.dart';
@@ -19,6 +21,7 @@ import '../services/api_service.dart';
     MaterialRoute(page: SearchScreen),
     MaterialRoute(page: Booking),
     MaterialRoute(page: Favourites),
+    MaterialRoute(page: ProfileScreen),
   ],
   dependencies: [
     LazySingleton(classType: ApiService),

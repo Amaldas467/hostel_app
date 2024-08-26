@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../app/app.router.dart';
+import '../../../app/utils.dart';
 import '../../../constants/colorconstants.dart';
 
 class Homescreen_drawer extends StatelessWidget {
@@ -51,7 +53,7 @@ class Homescreen_drawer extends StatelessWidget {
             leading: Icon(Icons.account_circle),
             title: Text('Profile'),
             onTap: () {
-              // Navigate to profile screen
+              navigationService.navigateTo(Routes.profileScreen);
             },
           ),
           ListTile(
@@ -108,7 +110,7 @@ class Homescreen_drawer extends StatelessWidget {
             leading: Icon(Icons.logout),
             title: Text('Logout'),
             onTap: () {
-              // Handle logout
+              navigationService.navigateTo(Routes.signInView);
             },
           ),
         ],
