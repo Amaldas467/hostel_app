@@ -190,6 +190,7 @@ class SearchScreen extends StatelessWidget {
                               userCount: hostel['userCount'],
                               landmark: hostel['landmark'],
                               taxes: hostel['taxes'],
+                              description: hostel['description'],
                             ),
                           ),
                         );
@@ -245,6 +246,7 @@ class SearchScreen extends StatelessWidget {
                               userCount: hostel['userCount'],
                               landmark: hostel['landmark'],
                               taxes: hostel['taxes'],
+                              description: hostel['description'],
                             ),
                           ),
                         );

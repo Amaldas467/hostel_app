@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../card2.dart';
 import '../carousel.dart';
 import '../filter_widget.dart';
 import '../hostelcard.dart';
@@ -72,6 +71,7 @@ class TopratedTab extends StatelessWidget {
                             userCount: hostel['userCount'],
                             landmark: hostel['landmark'],
                             taxes: hostel['taxes'],
+                            description: hostel['description'],
                           ),
                         ),
                       );
@@ -156,6 +156,7 @@ class TopratedTab extends StatelessWidget {
                     offerPercentage: hostel['offerPercentage'],
                     userCount: hostel['userCount'],
                     landmark: hostel['landmark'],
+                    description: hostel['description'],
                   ),
                 );
               }),

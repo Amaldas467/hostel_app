@@ -12,6 +12,8 @@ final List<Map<String, dynamic>> hostels = [
     'offerPercentage': '20% OFF',
     'userCount': 120,
     'taxes': 20,
+    'description':
+        'A cozy and comfortable hostel located near the iconic Central Park, offering a friendly atmosphere and great amenities.',
   },
   {
     'imageUrl': 'assets/hostel1.jpg',
@@ -24,6 +26,8 @@ final List<Map<String, dynamic>> hostels = [
     'offerPercentage': '15% OFF',
     'userCount': 95,
     'taxes': 20,
+    'description':
+        'A modern and stylish hostel just a short walk from Hollywood Blvd, perfect for those looking to explore LA in style.',
   },
   {
     'imageUrl': 'assets/hostel1.jpg',
@@ -36,6 +40,8 @@ final List<Map<String, dynamic>> hostels = [
     'offerPercentage': '20% OFF',
     'userCount': 200,
     'taxes': 20,
+    'description':
+        'Experience luxury at an affordable price in this hostel near Millennium Park, offering top-notch facilities and services.',
   },
   {
     'imageUrl': 'assets/hostel1.jpg',
@@ -48,6 +54,8 @@ final List<Map<String, dynamic>> hostels = [
     'offerPercentage': '25% OFF',
     'userCount': 80,
     'taxes': 20,
+    'description':
+        'A budget-friendly hostel located near Downtown Houston, ideal for travelers looking to save without compromising on comfort.',
   },
 ];
 

@@ -115,6 +115,7 @@ class RecommendedTab extends StatelessWidget {
                             userCount: hostel['userCount'],
                             landmark: hostel['landmark'],
                             taxes: hostel['taxes'],
+                            description: hostel['description'],
                           ),
                         ),
                       );
@@ -217,6 +218,7 @@ class RecommendedTab extends StatelessWidget {
                     offerPercentage: hostel['offerPercentage'],
                     userCount: hostel['userCount'],
                     landmark: hostel['landmark'],
+                    description: hostel['description'],
                   ),
                 );
               }),

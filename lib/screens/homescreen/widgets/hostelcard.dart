@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../hostel_detail/hostel_detail.dart';
+
 class Hostelcard extends StatefulWidget {
   final String imageUrl;
   final double rating;
@@ -12,6 +14,7 @@ class Hostelcard extends StatefulWidget {
   final String landmark;
   final double height;
   final int taxes;
+  final String description; // Add the description field
 
   Hostelcard({
     required this.imageUrl,
@@ -25,6 +28,7 @@ class Hostelcard extends StatefulWidget {
     required this.landmark,
     required this.height,
     required this.taxes,
+    required this.description, // Initialize the description field
   });
 
   @override
@@ -40,10 +44,32 @@ class _HostelcardState extends State<Hostelcard> {
     });
   }
 
+  void _navigateToDetails(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HostelDetailsPage(
+          imageUrl: widget.imageUrl,
+          rating: widget.rating,
+          title: widget.title,
+          price: widget.price,
+          location: widget.location,
+          originalPrice: widget.originalPrice,
+          offerPercentage: widget.offerPercentage,
+          userCount: widget.userCount,
+          landmark: widget.landmark,
+          taxes: widget.taxes,
+          description:
+              widget.description, // Pass the description to the details page
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () => _navigateToDetails(context),
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
