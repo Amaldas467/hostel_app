@@ -8,6 +8,7 @@ import 'package:hostel_app/screens/signin_page/signin_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 
+import '../screens/homescreen/widgets/drawer_screens/refer_screen.dart';
 import '../screens/signup_page/signup_view.dart';
 import '../screens/splash_screen/splash_view.dart';
 import '../services/api_service.dart';
@@ -22,6 +23,7 @@ import '../services/api_service.dart';
     MaterialRoute(page: Booking),
     MaterialRoute(page: Favourites),
     MaterialRoute(page: ProfileScreen),
+    MaterialRoute(page: ReferScreen),
   ],
   dependencies: [
     LazySingleton(classType: ApiService),

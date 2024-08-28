@@ -74,7 +74,7 @@ class Homescreen_drawer extends StatelessWidget {
             leading: Icon(Icons.people),
             title: Text('Invite & Earn'),
             onTap: () {
-              // Navigate to settings screen
+              navigationService.navigateTo(Routes.referScreen);
             },
           ),
           ListTile(
