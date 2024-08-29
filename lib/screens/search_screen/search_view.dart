@@ -179,6 +179,7 @@ class SearchScreen extends StatelessWidget {
                           child: SizedBox(
                             width: 210,
                             child: Hostelcard(
+                              id: hostel['id'],
                               height: 170,
                               imageUrl: hostel['imageUrl'],
                               rating: hostel['rating'],
@@ -235,6 +236,7 @@ class SearchScreen extends StatelessWidget {
                           child: SizedBox(
                             width: 210,
                             child: Hostelcard(
+                              id: hostel['id'],
                               height: 170,
                               imageUrl: hostel['imageUrl'],
                               rating: hostel['rating'],

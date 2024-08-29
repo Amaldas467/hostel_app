@@ -41,6 +41,7 @@ class TrendingTab extends StatelessWidget {
                         child: SizedBox(
                           width: 210,
                           child: Hostelcard(
+                            id: hostel['id'], // Pass the id here
                             height: 170,
                             imageUrl: hostel['imageUrl'],
                             rating: hostel['rating'],
@@ -75,42 +76,6 @@ class TrendingTab extends StatelessWidget {
             ),
           ),
         ),
-        //SliverToBoxAdapter(
-        //  child: Padding(
-        //    padding: const EdgeInsets.all(12),
-        //    child: SizedBox(
-        //      height: 220,
-        //      child: ListView.builder(
-        //        scrollDirection: Axis.horizontal,
-        //        itemCount: cardData.length,
-        //        itemBuilder: (context, index) {
-        //          double containerWidth = (index == 0) ? 220 : 200;
-        //          return Card2(
-        //            containerWidth: containerWidth,
-        //            cardData: cardData[index],
-        //          );
-        //        },
-        //      ),
-        //    ),
-        //  ),
-        //),
-        //SliverToBoxAdapter(
-        //  child: Padding(
-        //    padding: const EdgeInsets.all(15),
-        //    child: Container(
-        //      height: 50,
-        //      width: double.infinity,
-        //      decoration: BoxDecoration(
-        //          borderRadius: BorderRadius.circular(10),
-        //          border: Border.all(color: Colors.black)),
-        //      child: Center(
-        //          child: Text(
-        //        "View all offers",
-        //        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        //      )),
-        //    ),
-        //  ),
-        //),
         SliverToBoxAdapter(
           child: Padding(
             padding: const EdgeInsets.all(5),
@@ -126,6 +91,7 @@ class TrendingTab extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Hostelcard(
+                    id: hostel['id'], // Pass the id here
                     taxes: hostel['taxes'],
                     height: 240,
                     imageUrl: hostel['imageUrl'],

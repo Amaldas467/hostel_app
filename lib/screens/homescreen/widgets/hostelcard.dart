@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
-
 import '../../hostel_detail/hostel_detail.dart';
 
+// Global list to store favorite hostels
+List<Hostelcard> favoriteHostels = [];
+
+// Map to track favorite status using unique hostel IDs
+Map<String, bool> favoriteStatus = {};
+
 class Hostelcard extends StatefulWidget {
+  final String id; // Unique identifier
   final String imageUrl;
   final double rating;
   final String title;
@@ -14,9 +20,10 @@ class Hostelcard extends StatefulWidget {
   final String landmark;
   final double height;
   final int taxes;
-  final String description; // Add the description field
+  final String description;
 
   Hostelcard({
+    required this.id, // Initialize the id
     required this.imageUrl,
     required this.rating,
     required this.title,
@@ -28,7 +35,7 @@ class Hostelcard extends StatefulWidget {
     required this.landmark,
     required this.height,
     required this.taxes,
-    required this.description, // Initialize the description field
+    required this.description,
   });
 
   @override
@@ -36,11 +43,28 @@ class Hostelcard extends StatefulWidget {
 }
 
 class _HostelcardState extends State<Hostelcard> {
-  bool _isFavorite = false;
-
   void _toggleFavorite() {
     setState(() {
-      _isFavorite = !_isFavorite;
+      favoriteStatus[widget.id] = !(favoriteStatus[widget.id] ?? false);
+      if (favoriteStatus[widget.id]!) {
+        favoriteHostels.add(Hostelcard(
+          id: widget.id, // Pass the id
+          imageUrl: widget.imageUrl,
+          rating: widget.rating,
+          title: widget.title,
+          price: widget.price,
+          location: widget.location,
+          originalPrice: widget.originalPrice,
+          offerPercentage: widget.offerPercentage,
+          userCount: widget.userCount,
+          landmark: widget.landmark,
+          height: widget.height,
+          taxes: widget.taxes,
+          description: widget.description,
+        ));
+      } else {
+        favoriteHostels.removeWhere((hostel) => hostel.id == widget.id);
+      }
     });
   }
 
@@ -59,8 +83,7 @@ class _HostelcardState extends State<Hostelcard> {
           userCount: widget.userCount,
           landmark: widget.landmark,
           taxes: widget.taxes,
-          description:
-              widget.description, // Pass the description to the details page
+          description: widget.description,
         ),
       ),
     );
@@ -68,6 +91,7 @@ class _HostelcardState extends State<Hostelcard> {
 
   @override
   Widget build(BuildContext context) {
+    bool isFavorite = favoriteStatus[widget.id] ?? false;
     return InkWell(
       onTap: () => _navigateToDetails(context),
       child: Card(
@@ -193,8 +217,8 @@ class _HostelcardState extends State<Hostelcard> {
                       alignment: Alignment.center,
                       child: IconButton(
                         icon: Icon(
-                          _isFavorite ? Icons.favorite : Icons.favorite_border,
-                          color: _isFavorite ? Colors.red : Colors.grey,
+                          isFavorite ? Icons.favorite : Icons.favorite_border,
+                          color: isFavorite ? Colors.red : Colors.grey,
                           size: 20,
                         ),
                         onPressed: _toggleFavorite,
@@ -207,6 +231,27 @@ class _HostelcardState extends State<Hostelcard> {
           ],
         ),
       ),
+    );
+  }
+}
+
+class Favourites extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Favourites'),
+      ),
+      body: favoriteHostels.isEmpty
+          ? Center(
+              child: Text('No favourites added'),
+            )
+          : ListView.builder(
+              itemCount: favoriteHostels.length,
+              itemBuilder: (context, index) {
+                return favoriteHostels[index];
+              },
+            ),
     );
   }
 }

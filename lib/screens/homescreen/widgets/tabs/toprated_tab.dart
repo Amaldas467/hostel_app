@@ -60,6 +60,7 @@ class TopratedTab extends StatelessWidget {
                         child: SizedBox(
                           width: 210,
                           child: Hostelcard(
+                            id: hostel['id'],
                             height: 170,
                             imageUrl: hostel['imageUrl'],
                             rating: hostel['rating'],
@@ -145,6 +146,7 @@ class TopratedTab extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 10),
                   child: Hostelcard(
+                    id: hostel['id'],
                     taxes: hostel['taxes'],
                     height: 240,
                     imageUrl: hostel['imageUrl'],
