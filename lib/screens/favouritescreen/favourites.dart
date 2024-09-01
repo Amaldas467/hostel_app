@@ -9,16 +9,21 @@ class Favourites extends StatelessWidget {
       appBar: AppBar(
         title: Text('Favourites'),
       ),
-      body: favoriteHostels.isEmpty
-          ? Center(
-              child: Text('No favourites added'),
-            )
-          : ListView.builder(
-              itemCount: favoriteHostels.length,
-              itemBuilder: (context, index) {
-                return favoriteHostels[index];
-              },
-            ),
+      body: ValueListenableBuilder<List<Hostelcard>>(
+        valueListenable: favoriteHostelsNotifier,
+        builder: (context, favoriteHostels, _) {
+          return favoriteHostels.isEmpty
+              ? Center(
+                  child: Text('No favourites added'),
+                )
+              : ListView.builder(
+                  itemCount: favoriteHostels.length,
+                  itemBuilder: (context, index) {
+                    return favoriteHostels[index];
+                  },
+                );
+        },
+      ),
     );
   }
 }

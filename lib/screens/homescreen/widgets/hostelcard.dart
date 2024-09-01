@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../hostel_detail/hostel_detail.dart';
 
-// Global list to store favorite hostels
-List<Hostelcard> favoriteHostels = [];
+// ValueNotifier to store favorite hostels
+ValueNotifier<List<Hostelcard>> favoriteHostelsNotifier = ValueNotifier([]);
 
 // Map to track favorite status using unique hostel IDs
 Map<String, bool> favoriteStatus = {};
@@ -47,23 +47,28 @@ class _HostelcardState extends State<Hostelcard> {
     setState(() {
       favoriteStatus[widget.id] = !(favoriteStatus[widget.id] ?? false);
       if (favoriteStatus[widget.id]!) {
-        favoriteHostels.add(Hostelcard(
-          id: widget.id, // Pass the id
-          imageUrl: widget.imageUrl,
-          rating: widget.rating,
-          title: widget.title,
-          price: widget.price,
-          location: widget.location,
-          originalPrice: widget.originalPrice,
-          offerPercentage: widget.offerPercentage,
-          userCount: widget.userCount,
-          landmark: widget.landmark,
-          height: widget.height,
-          taxes: widget.taxes,
-          description: widget.description,
-        ));
+        favoriteHostelsNotifier.value = [
+          ...favoriteHostelsNotifier.value,
+          Hostelcard(
+            id: widget.id, // Pass the id
+            imageUrl: widget.imageUrl,
+            rating: widget.rating,
+            title: widget.title,
+            price: widget.price,
+            location: widget.location,
+            originalPrice: widget.originalPrice,
+            offerPercentage: widget.offerPercentage,
+            userCount: widget.userCount,
+            landmark: widget.landmark,
+            height: widget.height,
+            taxes: widget.taxes,
+            description: widget.description,
+          ),
+        ];
       } else {
-        favoriteHostels.removeWhere((hostel) => hostel.id == widget.id);
+        favoriteHostelsNotifier.value = favoriteHostelsNotifier.value
+            .where((hostel) => hostel.id != widget.id)
+            .toList();
       }
     });
   }
@@ -231,27 +236,6 @@ class _HostelcardState extends State<Hostelcard> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class Favourites extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Favourites'),
-      ),
-      body: favoriteHostels.isEmpty
-          ? Center(
-              child: Text('No favourites added'),
-            )
-          : ListView.builder(
-              itemCount: favoriteHostels.length,
-              itemBuilder: (context, index) {
-                return favoriteHostels[index];
-              },
-            ),
     );
   }
 }

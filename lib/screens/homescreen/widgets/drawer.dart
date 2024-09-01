@@ -77,13 +77,13 @@ class Homescreen_drawer extends StatelessWidget {
               navigationService.navigateTo(Routes.referScreen);
             },
           ),
-          ListTile(
-            leading: Icon(Icons.wallet_outlined),
-            title: Text('Link Wallet'),
-            onTap: () {
-              // Navigate to settings screen
-            },
-          ),
+          //ListTile(
+          //  leading: Icon(Icons.wallet_outlined),
+          //  title: Text('Link Wallet'),
+          //  onTap: () {
+          //    // Navigate to settings screen
+          //  },
+          //),
           ListTile(
             leading: Icon(Icons.lock),
             title: Text('View Privacy Policy'),

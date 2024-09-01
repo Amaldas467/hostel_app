@@ -3,6 +3,8 @@ import 'package:hostel_app/screens/homescreen/widgets/drawer.dart';
 import 'package:hostel_app/screens/homescreen/widgets/tabs/recommended_tab.dart';
 import 'package:hostel_app/screens/homescreen/widgets/tabs/toprated_tab.dart';
 import 'package:hostel_app/screens/homescreen/widgets/tabs/trending_tab.dart';
+import 'package:hostel_app/screens/search_screen/search_view.dart';
+
 import '../../constants/colorconstants.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -38,11 +40,21 @@ class _HomeScreenState extends State<HomeScreen> {
                   borderRadius: BorderRadius.circular(30),
                   color: Colors.grey[200],
                 ),
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Search...',
-                    border: InputBorder.none,
-                    icon: Icon(Icons.search),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SearchScreen()),
+                    );
+                  },
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Search...',
+                      border: InputBorder.none,
+                      icon: Icon(Icons.search),
+                    ),
+                    enabled:
+                        false, // Disable the TextField to prevent keyboard popup
                   ),
                 ),
               ),
