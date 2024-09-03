@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../favouritescreen/widgets/favourite_provider.dart';
 import '../../hostel_detail/hostel_detail.dart';
 
-// ValueNotifier to store favorite hostels
-ValueNotifier<List<Hostelcard>> favoriteHostelsNotifier = ValueNotifier([]);
-
-// Map to track favorite status using unique hostel IDs
-Map<String, bool> favoriteStatus = {};
-
 class Hostelcard extends StatefulWidget {
-  final String id; // Unique identifier
+  final String id; // Define the id parameter
   final String imageUrl;
   final double rating;
   final String title;
@@ -43,62 +39,33 @@ class Hostelcard extends StatefulWidget {
 }
 
 class _HostelcardState extends State<Hostelcard> {
-  void _toggleFavorite() {
-    setState(() {
-      favoriteStatus[widget.id] = !(favoriteStatus[widget.id] ?? false);
-      if (favoriteStatus[widget.id]!) {
-        favoriteHostelsNotifier.value = [
-          ...favoriteHostelsNotifier.value,
-          Hostelcard(
-            id: widget.id, // Pass the id
-            imageUrl: widget.imageUrl,
-            rating: widget.rating,
-            title: widget.title,
-            price: widget.price,
-            location: widget.location,
-            originalPrice: widget.originalPrice,
-            offerPercentage: widget.offerPercentage,
-            userCount: widget.userCount,
-            landmark: widget.landmark,
-            height: widget.height,
-            taxes: widget.taxes,
-            description: widget.description,
-          ),
-        ];
-      } else {
-        favoriteHostelsNotifier.value = favoriteHostelsNotifier.value
-            .where((hostel) => hostel.id != widget.id)
-            .toList();
-      }
-    });
-  }
-
-  void _navigateToDetails(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => HostelDetailsPage(
-          imageUrl: widget.imageUrl,
-          rating: widget.rating,
-          title: widget.title,
-          price: widget.price,
-          location: widget.location,
-          originalPrice: widget.originalPrice,
-          offerPercentage: widget.offerPercentage,
-          userCount: widget.userCount,
-          landmark: widget.landmark,
-          taxes: widget.taxes,
-          description: widget.description,
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    bool isFavorite = favoriteStatus[widget.id] ?? false;
+    final favoriteProvider = Provider.of<FavoriteProvider>(context);
+    bool isFavorite = favoriteProvider.favoriteStatus[widget.id] ?? false;
+
     return InkWell(
-      onTap: () => _navigateToDetails(context),
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HostelDetailsPage(
+              id: widget.id, // Pass the id parameter
+              imageUrl: widget.imageUrl,
+              rating: widget.rating,
+              title: widget.title,
+              price: widget.price,
+              location: widget.location,
+              originalPrice: widget.originalPrice,
+              offerPercentage: widget.offerPercentage,
+              userCount: widget.userCount,
+              landmark: widget.landmark,
+              taxes: widget.taxes,
+              description: widget.description,
+            ),
+          ),
+        );
+      },
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
@@ -226,7 +193,9 @@ class _HostelcardState extends State<Hostelcard> {
                           color: isFavorite ? Colors.red : Colors.grey,
                           size: 20,
                         ),
-                        onPressed: _toggleFavorite,
+                        onPressed: () {
+                          favoriteProvider.toggleFavorite(widget);
+                        },
                       ),
                     ),
                   ),

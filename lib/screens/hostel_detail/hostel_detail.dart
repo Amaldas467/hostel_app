@@ -1,7 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../favouritescreen/widgets/favourite_provider.dart';
+import '../homescreen/widgets/hostelcard.dart';
 
 class HostelDetailsPage extends StatefulWidget {
+  final String id;
   final String imageUrl;
   final double rating;
   final String title;
@@ -15,6 +19,7 @@ class HostelDetailsPage extends StatefulWidget {
   final String description;
 
   HostelDetailsPage({
+    required this.id,
     required this.imageUrl,
     required this.rating,
     required this.title,
@@ -33,16 +38,11 @@ class HostelDetailsPage extends StatefulWidget {
 }
 
 class _HostelDetailsPageState extends State<HostelDetailsPage> {
-  bool _isFavorite = false;
-
-  void _toggleFavorite() {
-    setState(() {
-      _isFavorite = !_isFavorite;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final favoriteProvider = Provider.of<FavoriteProvider>(context);
+    bool isFavorite = favoriteProvider.favoriteStatus[widget.id] ?? false;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
@@ -96,10 +96,28 @@ class _HostelDetailsPageState extends State<HostelDetailsPage> {
                     backgroundColor: Colors.white,
                     child: IconButton(
                       icon: Icon(
-                        _isFavorite ? Icons.favorite : Icons.favorite_border,
-                        color: _isFavorite ? Colors.red : Colors.grey,
+                        isFavorite ? Icons.favorite : Icons.favorite_border,
+                        color: isFavorite ? Colors.red : Colors.grey,
                       ),
-                      onPressed: _toggleFavorite,
+                      onPressed: () {
+                        favoriteProvider.toggleFavorite(
+                          Hostelcard(
+                            id: widget.id,
+                            imageUrl: widget.imageUrl,
+                            rating: widget.rating,
+                            title: widget.title,
+                            price: widget.price,
+                            location: widget.location,
+                            originalPrice: widget.originalPrice,
+                            offerPercentage: widget.offerPercentage,
+                            userCount: widget.userCount,
+                            landmark: widget.landmark,
+                            height: 200, // Adjust this value as needed
+                            taxes: widget.taxes,
+                            description: widget.description,
+                          ),
+                        );
+                      },
                     ),
                   ),
                 ),
@@ -231,7 +249,6 @@ class _HostelDetailsPageState extends State<HostelDetailsPage> {
                           },
                           style: ElevatedButton.styleFrom(
                             padding: EdgeInsets.symmetric(vertical: 16),
-                            //primary: Colors.grey[700], // Button color
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
